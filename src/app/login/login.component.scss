@@ -1,0 +1,55 @@
+/* login.component.scss */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 50%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/* login.component.scss */
+
+.result-message {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  &.success {
+    color: green;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
+
+  &.failure {
+    color: white;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+}
+

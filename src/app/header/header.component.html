@@ -1,0 +1,14 @@
+<!-- header.component.html -->
+
+<div *ngIf="isHeaderVisible" class="home-container">
+  
+  <div class="content">
+      <p>Click on login/Register</p>
+  </div>
+  <div class="actions">
+
+      <button class="btn btn-primary" [routerLink]="['/login']" routerLinkActive="active" (click)="onLoginClick()">Login</button>
+      <button class="btn btn-secondary" [routerLink]="['/reg']" routerLinkActive="active" (click)="onRegisterClick()">Register</button>
+
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<!-- registration.component.html -->
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="w-50 mx-auto mt-5">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" formControlName="username" class="form-control" />
+      <div *ngIf="registrationForm.get('username')?.hasError('required') && registrationForm.get('username')?.touched">
+        Username is required.
+      </div>
+      <div
+        *ngIf="registrationForm.get('username')?.hasError('minlength') && registrationForm.get('username')?.touched"
+      >
+        Username must be at least 3 characters long.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" formControlName="email" class="form-control" />
+      <div *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched">
+        Email is required.
+      </div>
+      <div *ngIf="registrationForm.get('email')?.hasError('email') && registrationForm.get('email')?.touched">
+        Please enter a valid email address.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" class="form-control" />
+      <div *ngIf="registrationForm.get('password')?.hasError('required') && registrationForm.get('password')?.touched">
+        Password is required.
+      </div>
+      <div *ngIf="registrationForm.get('password')?.hasError('minlength') && registrationForm.get('password')?.touched">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" formControlName="confirmPassword" class="form-control" />
+      <div
+        *ngIf="
+          registrationForm.get('confirmPassword')?.hasError('required') &&
+          registrationForm.get('confirmPassword')?.touched
+        "
+      >
+        Confirm Password is required.
+      </div>
+      <div *ngIf="registrationForm.get('confirmPassword')?.hasError('passwordsNotMatching') && registrationForm.get('confirmPassword')?.touched">
+        Passwords do not match.
+      </div>
+      
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Register</button>
+    <br><br>
+    <a *ngIf="formSubmitted" routerLink="/login" class="btn btn-success ml-2">Go to Login</a>
+
+  </form>
+  
+  <div>
+    <h3 class="text-center text-secondary mt-5">Users Info</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <td>User ID</td>
+                <td>Username</td>
+                <td>Password</td>
+            </tr>
+            
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let user of usersListr; index as i">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td><button class="btn btn-danger right" (click)="delUser(i)">&#215;</button></td>
+                <td><button *ngIf="formSubmitted" class="btn btn-secondary right" (click)="update(i)">Update</button></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
